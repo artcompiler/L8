@@ -1,0 +1,183 @@
+/* -*- mode: javascript; tab-width: 4; indent-tabs-mode: nil -*- */
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2004-2006
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+use default namespace Ast,
+    namespace Ast;
+
+class JSON {
+
+    var strVal = null;
+    var objVal = null;
+
+    public function JSON(str) {
+        strVal = str;
+    }
+
+    // Convert the AST to a JSON value
+    public function toValue(str=null, obj=null) {
+        //print("JSON.toValue() node="+node.constructor)
+
+        if (str === null) {
+            str = this.strVal;
+        }
+
+        let parser = new Parse::Parser(str, [], "JSON string");
+        let node = parser.program();
+        this.objVal = decode(node, obj)
+        return objVal
+    }
+
+    // Convert a JSON value to a string
+    public function toString(obj=null) {
+        if (obj=== null) {
+            obj = this.objVal;
+        }
+        return encode(obj)
+    }
+
+    function decode(node, obj=null) {
+
+        if (node is Program) {
+            return decode(node.body)
+        }
+        else if (node is ExprStmt) {
+            return decode(node.expr)
+        }
+        else if (node is LiteralBoolean) {
+            return String(node.booleanValue);
+        }
+        else if (node is LiteralInt) {
+            return node.intValue;
+        }
+        else if (node is LiteralString) {
+            return ""+node.strValue;
+        }
+        else if (node is LiteralField) {
+            Util::assert(node.kind===0);
+            let key = decode(node.ident);
+            let val = decode(node.expr);
+            obj[key] = val;
+            return obj;
+        }
+        else if (node is LiteralObject) {
+            let obj = { }
+            let fields = node.fields
+            for (let i = 0; i < fields.length; i++) {
+                decode(fields[i], obj)
+            }
+            return obj;
+        }
+        else if (node is LiteralArray) {
+            let val = [ ]
+            let exprs = node.exprs
+            for (let i = 0; i < exprs.length; i++) {
+                let node = exprs[i];
+                val[i] = decode(node)
+            }
+            return val;
+        }
+        else if (node is LiteralNull) {
+            return "null";
+        }
+        else if (node is Identifier) {
+            return node.ident;
+        }
+        else if (node is Array) {
+            let val = [ ]
+            for (let i = 0; i < node.length; i++) {
+                val[i] = decode(node[i])
+            }
+            return val;
+        }
+        else if (node is String) {
+            return node;
+        }
+
+        throw "node type unknown: " + node.constructor;
+    }
+
+    function encode(obj) {
+        let str = "";
+
+        let isArray = false;
+        if (obj is Array) {
+            isArray = true;
+        }
+
+        if (isArray) {
+            str += "[";
+        }
+        else {
+            str += "{";
+        }
+
+        for (var p in obj) {
+            var last = str.charAt(str.length-1);
+            if (last != "[" && last != "{") {
+                str += ", ";
+            }
+            
+            if (!isArray) { 
+                str += '"' + p + '"' + ":";
+            }
+
+            switch (typeof obj[p]) {
+            case "number":
+                str += obj[p];
+                break;
+            case "string":
+                str += '"' + obj[p].replace(new RegExp("\\\\", "g"), "\\\\")
+                                   .replace(new RegExp("'", "g"), "\\'")
+                                   .replace(new RegExp("\n", "g"), "") + '"';
+                break;
+            default:
+                str += encode(obj[p]);
+                break;
+            }
+        }
+
+        if (isArray) {
+            str += "]";
+        }
+        else {
+            str += "}";
+        }
+        
+        return str;
+    }
+}
