@@ -1,0 +1,36 @@
+OVERVIEW
+
+L8 is a language with JSON. It constructs JavaScript values from JSON formatted
+text, and writes JSON formatted text from JavaScript values.
+
+L8 is written in L0. 
+
+BUILDING
+
+To build:
+
+   cd build
+   ./make.sh
+
+This produces the file:
+
+   ../bin/l8c.swf
+
+
+USING
+
+To run:
+
+    ./comp.sh some.js
+
+or
+
+    avmshell ../bin/l8c.swf some.js
+
+where avmshell is the name of a recent build of Tamarin.
+
+
+This produces the file:
+
+    some.js.js
+

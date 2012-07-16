@@ -1,0 +1,27 @@
+[ /* 0 */ "unused"
+, /* 1 */ { "tag": "Name",  "id": "foo"}
+, /* 2 */ { "tag": "Name",  "id": "x"}
+, /* 3 */ { "tag": "ValFixture",  "isReadOnly": false}
+, /* 4 */ { "tag": "Fixture",  "name": 2, "data": 3}
+, /* 5 */ { "tag": "Head",  "fixtures": [4], "exprs": []}
+, /* 6 */ { "tag": "Head",  "fixtures": [], "exprs": []}
+, /* 7 */ { "tag": "LiteralInt",  "intValue": 10}
+, /* 8 */ { "tag": "InitBinding",  "name": 2, "expr": 7}
+, /* 9 */ { "tag": "InitExpr",  "target": 1, "head": 6, "inits": [8]}
+, /* 10 */ { "tag": "ExprStmt",  "expr": 9}
+, /* 11 */ { "tag": "Identifier",  "ident": "print"}
+, /* 12 */ { "tag": "Identifier",  "ident": "x"}
+, /* 13 */ { "tag": "CallExpr",  "expr": 11, "args": [12], "spread": null, "pos": 3, "strict": false}
+, /* 14 */ { "tag": "ExprStmt",  "expr": 13}
+, /* 15 */ { "tag": "Module",  "name": 1, "head": 5, "body": [10,14]}
+, /* 16 */ { "tag": "ModuleFixture",  "module": 15}
+, /* 17 */ { "tag": "Fixture",  "name": 1, "data": 16}
+, /* 18 */ { "tag": "Name",  "id": "bar"}
+, /* 19 */ { "tag": "Import",  "importSpec": "*", "moduleSpec": "http://foo.com/Bar"}
+, /* 20 */ { "tag": "Module",  "name": 18, "head": 6, "body": [19]}
+, /* 21 */ { "tag": "ModuleFixture",  "module": 20}
+, /* 22 */ { "tag": "Fixture",  "name": 18, "data": 21}
+, /* 23 */ { "tag": "Head",  "fixtures": [17,22], "exprs": []}
+, /* 24 */ { "tag": "FuncAttr",  "uses_arguments": false, "uses_eval": false, "uses_rest": false, "uses_with": false, "uses_catch": false, "uses_finally": false, "uses_yield": false, "uses_super": false, "is_native": false, "capture_result": false, "reify_activation": false}
+, /* 25 */ { "tag": "Program",  "body": [], "head": 23, "attr": 24, "file": "../test/moduledecl.js"}
+]

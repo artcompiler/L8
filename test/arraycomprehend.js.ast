@@ -1,0 +1,70 @@
+({ "tag": "Program", 
+  "body": [{ "tag": "ExprStmt", 
+  "expr": { "tag": "LiteralComprehension", 
+  "expr": { "tag": "LiteralArray", 
+  "exprs": [{ "tag": "Identifier", 
+  "ident": "x"},{ "tag": "Identifier", 
+  "ident": "y"}]
+,  "spread": null}
+,  "forList": { "tag": "ComprehendFor", 
+  "head": { "tag": "Head", 
+  "fixtures": [{ "tag": "Fixture", 
+  "name": { "tag": "Name", 
+  "id": "x"}
+,  "data": { "tag": "ValFixture", 
+  "isReadOnly": false}}]
+,  "exprs": { "tag": "InitExpr", 
+  "target": null
+,  "head": { "tag": "Head", 
+  "fixtures": []
+,  "exprs": []}
+,  "inits": []}}
+,  "iterator": { "tag": "LiteralArray", 
+  "exprs": [{ "tag": "LiteralInt", 
+  "intValue": 1},{ "tag": "LiteralInt", 
+  "intValue": 2},{ "tag": "LiteralInt", 
+  "intValue": 3}]
+,  "spread": null}
+,  "subclause": { "tag": "ComprehendFor", 
+  "head": { "tag": "Head", 
+  "fixtures": [{ "tag": "Fixture", 
+  "name": { "tag": "Name", 
+  "id": "y"}
+,  "data": { "tag": "ValFixture", 
+  "isReadOnly": false}}]
+,  "exprs": { "tag": "InitExpr", 
+  "target": null
+,  "head": { "tag": "Head", 
+  "fixtures": []
+,  "exprs": []}
+,  "inits": []}}
+,  "iterator": { "tag": "LiteralArray", 
+  "exprs": [{ "tag": "LiteralInt", 
+  "intValue": 1},{ "tag": "LiteralInt", 
+  "intValue": 2},{ "tag": "LiteralInt", 
+  "intValue": 3}]
+,  "spread": null}
+,  "subclause": null}}
+,  "ifCond": { "tag": "ComprehendIf", 
+  "condition": { "tag": "BinaryExpr", 
+  "op": 17
+,  "e1": { "tag": "Identifier", 
+  "ident": "x"}
+,  "e2": { "tag": "LiteralInt", 
+  "intValue": 1}}}}}]
+,  "head": { "tag": "Head", 
+  "fixtures": []
+,  "exprs": []}
+,  "attr": { "tag": "FuncAttr", 
+  "uses_arguments": false
+,  "uses_eval": false
+,  "uses_rest": false
+,  "uses_with": false
+,  "uses_catch": false
+,  "uses_finally": false
+,  "uses_yield": false
+,  "uses_super": false
+,  "is_native": false
+,  "capture_result": false
+,  "reify_activation": false}
+,  "file": "../test/arraycomprehend.js"})

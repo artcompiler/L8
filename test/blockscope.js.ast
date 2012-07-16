@@ -1,0 +1,34 @@
+[ /* 0 */ { "tag": "Identifier", "ident": "print"}
+, /* 1 */ { "tag": "LiteralString", "strValue": "fini"}
+, /* 2 */ { "tag": "CallExpr", "expr": 0, "args": [1], "spread": null, "pos": 7, "strict": false}
+, /* 3 */ { "tag": "ExprStmt", "expr": 2}
+, /* 4 */ { "tag": "Name", "id": "f"}
+, /* 5 */ { "tag": "FuncName", "kind": 0, "ident": "f"}
+, /* 6 */ { "tag": "Head", "fixtures": [], "exprs": []}
+, /* 7 */ { "tag": "Name", "id": "x"}
+, /* 8 */ { "tag": "LiteralInt", "intValue": 10}
+, /* 9 */ { "tag": "InitBinding", "name": 7, "expr": 8}
+, /* 10 */ { "tag": "InitExpr", "target": 1, "head": 6, "inits": [9]}
+, /* 11 */ { "tag": "ExprStmt", "expr": 10}
+, /* 12 */ { "tag": "Identifier", "ident": "x"}
+, /* 13 */ { "tag": "Name", "id": "y"}
+, /* 14 */ { "tag": "ValFixture", "ty": { "ast_constant": "Ast::specialTypes[0]" }, "isReadOnly": false}
+, /* 15 */ { "tag": "Fixture", "name": 13, "data": 14}
+, /* 16 */ { "tag": "Head", "fixtures": [15], "exprs": []}
+, /* 17 */ { "tag": "LiteralInt", "intValue": 20}
+, /* 18 */ { "tag": "InitBinding", "name": 13, "expr": 17}
+, /* 19 */ { "tag": "InitExpr", "target": 1, "head": 6, "inits": [18]}
+, /* 20 */ { "tag": "ExprStmt", "expr": 19}
+, /* 21 */ { "tag": "Block", "head": 16, "stmts": [20]}
+, /* 22 */ { "tag": "BlockStmt", "block": 21}
+, /* 23 */ { "tag": "IfStmt", "test": 12, "consequent": 22, "alternate": null}
+, /* 24 */ { "tag": "Fixture", "name": 7, "data": 14}
+, /* 25 */ { "tag": "Head", "fixtures": [24], "exprs": []}
+, /* 26 */ { "tag": "FuncAttr", "uses_arguments": false, "uses_eval": false, "uses_rest": false, "uses_with": false, "uses_catch": false, "uses_finally": false, "uses_yield": false, "uses_super": false, "is_native": false, "capture_result": false, "reify_activation": false}
+, /* 27 */ { "tag": "Func", "name": 5, "body": [11,23], "params": 6, "numparams": 0, "vars": 25, "defaults": [], "ty": { "ast_constant": "Ast::specialTypes[0]" }, "attr": 26, "strict": false, "pos": 0, "filename": null}
+, /* 28 */ { "tag": "MethodFixture", "func": 27, "ty": { "ast_constant": "Ast::specialTypes[0]" }, "isReadOnly": true, "isOverride": false, "isFinal": false}
+, /* 29 */ { "tag": "Fixture", "name": 4, "data": 28}
+, /* 30 */ { "tag": "Head", "fixtures": [29], "exprs": []}
+, /* 31 */ { "tag": "FuncAttr", "uses_arguments": false, "uses_eval": false, "uses_rest": false, "uses_with": false, "uses_catch": false, "uses_finally": false, "uses_yield": false, "uses_super": false, "is_native": false, "capture_result": false, "reify_activation": true}
+, /* 32 */ { "tag": "Program", "body": [3], "head": 30, "attr": 31, "file": "../test/blockscope.js"}
+]
