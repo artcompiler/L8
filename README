@@ -1,7 +1,7 @@
 OVERVIEW
 
-L8 is a language with JSON. It constructs JavaScript values from JSON formatted
-text, and writes JSON formatted text from JavaScript values.
+L8 is a language with JSON syntax and semantics. It constructs JavaScript values
+from JSON formatted text, and writes JSON formatted text from JavaScript values.
 
 L8 is written in L0. 
 
