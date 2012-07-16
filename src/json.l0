@@ -85,7 +85,7 @@ class JSON {
             return node.intValue;
         }
         else if (node is LiteralString) {
-            return ""+node.strValue;
+            return String(node.strValue);
         }
         else if (node is LiteralField) {
             Util::assert(node.kind===0);

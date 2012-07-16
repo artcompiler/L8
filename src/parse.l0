@@ -897,7 +897,7 @@ final class Parser
     // FIXME: presumably this belongs somewhere more central, but
     // right now it's only used for slice.
 
-    const intrinsic_ns = new Ast::ForgeableNamespace(Token::intern("http://adobe.com/AS3/2006/builtin"));
+//    const intrinsic_ns = new Ast::ForgeableNamespace(Token::intern("http://adobe.com/AS3/2006/builtin"));
 
     function slice(obj, pos, e1, e2, e3) {
         let args = [];

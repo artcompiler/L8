@@ -1,4 +1,4 @@
-({ "tag": "Program", 
+[{ "tag": "Program", 
   "body": [{ "tag": "ExprStmt", 
   "expr": { "tag": "LiteralComprehension", 
   "expr": { "tag": "LiteralArray", 
@@ -67,4 +67,4 @@
 ,  "is_native": false
 ,  "capture_result": false
 ,  "reify_activation": false}
-,  "file": "../test/arraycomprehend.js"})
+,  "file": "../test/arraycomprehend.js"}]
